@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'Reminder Creation'|trans }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/public/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css">
+    <style>
+        .top5 {
+            margin-top: 5px;
+        }
+        .top10 {
+            margin-top: 10px;
+        }
+        .top20 {
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row top20">
+
+            {% if error is defined %}
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            {% endif %}
+            
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ 'New reminder' |trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="formCreateReminder" action="http://127.0.0.1/~therveux/Calendar/web/app_dev.php/add_event" class="form-horizontal">
+                            <div class="row top5">
+                                <div class="form-group">
+                                    <label  class="col-sm-3 control-label">{{ 'Start date'|trans }}</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group date" id="reminder_date_start">
+                                            <input type="text" class="form-control" name="date_start">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="row top5">
+                                <div class="form-group">
+                                    <label for="reminderTitle" class="col-sm-3 control-label">{{ 'Title' }}</label>
+                                    <div class="col-sm-8">
+                                            <input type="text" class="form-control" name="titleReminder">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row top5">
+                                <div class="form-group">
+                                    <label for="reminderDescription" class="col-sm-3 control-label">{{ 'Description' }}</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="descriptionReminder" id="" cols="30" rows="10" class="form-control" style="width: 100%; height: 115px; resize: none;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row top5">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">{{ 'User(s)'|trans }}</label>
+                                    <div class="col-sm-8">
+                                        <select name="emails[]" id="emails" class="selectpicker dropdown" multiple="multiple" title="Sélectionner un utilisateur">
+                                            <option value="hurobaki@gmail.com">Théo HERVEUX</option>
+                                            <option value="synology.herveux@gmail.com">Synology HERVEUX</option>
+                                            {#<option value="romaric.boufatis@capfi.fr">Romaric BOUFATIS</option>#}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row top5">
+                                <div class="pull-right">
+                                    <button class="btn btn-success" type="submit" id="sendReminderButton" style="margin-right: 10px;">
+                                        {{ 'Send reminder'|trans }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/public/bower_components/moment/min/moment-with-locales.js') }}"></script>
+    <script src="{{ asset('assets/public/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/public/bower_components/bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
+    <script src="{{ asset('assets/public/bower_components/bootstrap-select/dist/js/i18n/defaults-fr_FR.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $('.selectpicker').selectpicker({
+            style: 'btn-default',
+            liveSearch:true,
+            showTick:true,
+            size: 10
+        });
+
+        $('#reminder_date_start').datetimepicker({
+            locale: 'fr',
+            format: "DD/MM/YYYY HH:mm",
+            defaultDate:  new Date()
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+            <link href="{{ asset('assets/public/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        {% endblock %}
+    </head>
+    <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; height: 60px;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url('homepage') }}">
+                <h1 style="margin-bottom: 0; margin-top: 0;">{{ 'Home'|trans }}</h1>
+            </a>
+        </div>
+    </nav>
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/public/bower_components/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/public/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

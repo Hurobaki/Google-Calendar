@@ -1,0 +1,22 @@
+Hello: "Bonjour"
+Home: "Accueil"
+
+# ERRORS #
+User is not connected : "Utilisateur non connecté"
+
+
+# TITLES #
+Google Calendar Conn : "Google Calendar conn."
+Reminder Creation: "Création de rappel"
+
+# REMINDER #
+Start date: "Date de démarrage"
+New reminder: "Nouveau rappel"
+Title: "Titre"
+Description: "Description"
+User(s): "Utilisateur(s)"
+Send reminder: "Envoyer le rappel"
+Reminder correctly created : "Le rappel a été correctement créé"
+reminder: 'Reminder'
+Something went wrong: 'Something went wrong'
+Erreur de connexion, veuillez contacter l\'administrateur: "Erreur de connexion, veuillez contacter l'administrateur"
